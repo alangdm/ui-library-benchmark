@@ -34,4 +34,9 @@ yarn build
 cp -r dist ../dist/preact
 cd ..
 
+cd lit
+yarn build
+cd -r dist ../dist/lit
+cd ..
+
 cp index.html dist/
