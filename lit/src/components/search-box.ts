@@ -25,17 +25,15 @@ export class SearchBox extends LitElement {
 
   render() {
     return html`
-    <div>
       <input
         .value=${this.input}
         @input=${this._onInput}
       />
-    </div>
     `
   }
 
   static styles = css`
-    div {
+    :host {
       display: grid;
       grid-template-columns: 3rem auto 3rem;
       grid-template-rows: 3rem auto 3rem;

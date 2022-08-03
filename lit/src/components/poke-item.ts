@@ -81,16 +81,14 @@ export class PokeItem extends LitElement {
 
   render() {
     return html`
-      <div class="wrapper" v-if="item && nameMarked">
-        <div class="id">${this._item?.id}</div>
-        ${this._nameMarkedTemplate()}
-        <div>${ this._item?.ja }</div>
-      </div>
+      <div class="id">${this._item?.id}</div>
+      ${this._nameMarkedTemplate()}
+      <div>${ this._item?.ja }</div>
     `
   }
 
   static styles = css`
-    .wrapper {
+    :host {
       background-color: var(--bg-sub-color);
     }
 
