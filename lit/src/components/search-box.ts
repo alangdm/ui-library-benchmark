@@ -1,15 +1,26 @@
 import { html, css, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 
+import { debounce } from '../utils/debounce';
+
 @customElement('search-box')
 export class SearchBox extends LitElement {
   @property()
   input = ''
 
-  _onInput(e:InputEvent) {
-    this.input = (e.target as HTMLInputElement).value;
+  private _fireChangeEvent() {
     const customEvent = new CustomEvent('input-changed', {detail: {input: this.input}})
     this.dispatchEvent(customEvent)
+  }
+
+  private _onInput(e:InputEvent) {
+    this.input = (e.target as HTMLInputElement).value;
+    this._fireChangeEvent();
+  }
+
+  constructor() {
+    super();
+    this._fireChangeEvent = debounce(this._fireChangeEvent.bind(this), 100)
   }
 
   render() {
